@@ -46,8 +46,9 @@ function updateDT(data) {
   // Format dataset and redraw DataTable. Use second index for key name
   const forks = [];
   for (let fork of data) {
-    fork.repoLink = `<a href="https://github.com/${fork.full_name}">Link</a>`;
-    fork.ownerName = `<img src="${fork.owner.avatar_url || 'https://avatars.githubusercontent.com/u/0?v=4'}&s=48" width="24" height="24" class="mr-2 rounded-circle" />${fork.owner ? fork.owner.login : '<strike><em>Unknown</em></strike>'}`;
+    fork.repoLink = `${fork.language}`;
+    fork.ownerName = `<a href="${fork.owner.html_url}" title="Open in new tab: ${fork.owner.html_url}" target="_blank"><img src="${fork.owner.avatar_url || 'https://avatars.githubusercontent.com/u/0?v=4'}&s=48" width="24" height="24" class="mr-2 rounded-circle" />${fork.owner ? fork.owner.login : '<strike><em>Unknown</em></strike>'}</a>`;
+    fork.name = `<a href="https://github.com/${fork.full_name}" title="Open in new tab: ${fork.full_name}" target="_blank">${fork.name}</a>`;
     forks.push(fork);
   }
   const dataSet = forks.map(fork =>
@@ -62,11 +63,10 @@ function updateDT(data) {
 function initDT() {
   // Create ordered Object with column name and mapped display name
   window.columnNamesMap = [
-    // [ 'Repository', 'full_name' ],
-    ['Link', 'repoLink'], // custom key
     ['Owner', 'ownerName'], // custom key
-    ['Name', 'name'],
+    ['Repo', 'name'],
     ['Branch', 'default_branch'],
+    ['Lang', 'language'], // custom key
     ['Stars', 'stargazers_count'],
     ['Forks', 'forks'],
     ['Open Issues', 'open_issues_count'],
