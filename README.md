@@ -17,7 +17,7 @@ Any time you're on a _GitHub_ repo you can click the bookmarklet
 and it'll bring up the _Active Forks_ of that repo.
 
 ```javascript
-javascript:!function(){if(title=document.title,title)if(thing=title.split(/(GitHub\s-\s)*([^:]*)/)[2],thing){var t="https://techgaun.github.io/active-forks/index.html#"+thing;window.open(t)}else window.alert("Not%20a%20valid%20GitHub%20page")}();
+javascript:/*active-forks bookmarklet*/!function(){if(title=document.title,title)if(thing=title.split(/(GitHub\s-\s)*([^:]*)/)[2],thing){var t="https://techgaun.github.io/active-forks/index.html#"+thing;window.open(t)} else window.alert("Not%20a%20valid%20GitHub%20page")}();
 ```
 
 It's recommended to use just the `丫` [U+4E2B Character](https://unicode-table.com/en/4E2B/) as the name of the _bookmarklet_ to keep it short and clear.
