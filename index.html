@@ -23,6 +23,15 @@
 
     <style>
         .darkmode-layer, .darkmode-toggle { z-index: 500; }
+        table.dataTable tr > td:nth-child(1) {
+            white-space: nowrap;
+            max-width: 6em;
+            overflow: hidden;
+        }
+        .dataTables_wrapper > .row {
+            display: block;
+            overflow-y: auto;
+        }
     </style>
 </head>
 
