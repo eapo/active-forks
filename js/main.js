@@ -45,10 +45,12 @@ function updateDT(data) {
 
   // Format dataset and redraw DataTable. Use second index for key name
   const forks = [];
+  const host = 'https://eapo.github.io/active-forks/index.html#'
   for (let fork of data) {
-    fork.repoLink = `${fork.language}`;
-    fork.ownerName = `<a href="${fork.owner.html_url}" title="Open in new tab: ${fork.owner.html_url}" target="_blank"><img src="${fork.owner.avatar_url || 'https://avatars.githubusercontent.com/u/0?v=4'}&s=48" width="24" height="24" class="mr-2 rounded-circle" />${fork.owner ? fork.owner.login : '<strike><em>Unknown</em></strike>'}</a>`;
-    fork.name = `<a href="https://github.com/${fork.full_name}" title="Open in new tab: ${fork.full_name}" target="_blank">${fork.name}</a>`;
+    fork.ownerName = `<a href="${fork.owner.html_url}" title="Open in new tab: /${fork.owner}" target="_blank"><img src="${fork.owner.avatar_url || 'https://avatars.githubusercontent.com/u/0?v=4'}&s=48" width="24" height="24" class="mr-2 rounded-circle" />${fork.owner ? fork.owner.login : '<strike><em>Unknown</em></strike>'}</a>`;
+    fork.name = `<a href="${fork.html_url}" title="Open in new tab: /${fork.full_name}" target="_blank">${fork.name}</a>`;
+    fork.forks = `${(fork.forks >= 1)?`<a href="${host}${fork.full_name}" title="Open in new tab: ${host}${fork.full_name}" target="_blank">${fork.forks}</a>`:0}`;
+    fork.open_issues_count = `${(fork.open_issues_count >= 1)?`<a href="${fork.html_url}/issues" title="Open in new tab: /${fork.full_name}/issues" target="_blank">${fork.open_issues_count}</a>`:0}`;
     forks.push(fork);
   }
   const dataSet = forks.map(fork =>
@@ -64,12 +66,12 @@ function initDT() {
   // Create ordered Object with column name and mapped display name
   window.columnNamesMap = [
     ['Owner', 'ownerName'], // custom key
-    ['Repo', 'name'],
+    ['Repo', 'name'], // custom key
     ['Branch', 'default_branch'],
-    ['Lang', 'language'], // custom key
+    ['Lang', 'language'],
     ['Stars', 'stargazers_count'],
-    ['Forks', 'forks'],
-    ['Open Issues', 'open_issues_count'],
+    ['Forks', 'forks'], // custom key
+    ['Open Issues', 'open_issues_count'], // custom key
     ['Size', 'size'],
     ['Last Push', 'pushed_at'],
   ];
