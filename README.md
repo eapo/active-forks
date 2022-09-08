@@ -1,4 +1,4 @@
-# active-forks
+# ![](https://github.githubassets.com/favicons/favicon.svg) _GitHub_ active-forks
 
 > Find the active github _forks_ of a project
 
@@ -17,9 +17,17 @@ Any time you're on a _GitHub_ repo you can click the bookmarklet
 and it'll bring up the _Active Forks_ of that repo.
 
 ```javascript
-javascript:/*active-forks bookmarklet*/!function(){if(title=document.title,title)if(thing=title.split(/(GitHub\s-\s)*([^:]*)/)[2],thing){var t="https://techgaun.github.io/active-forks/index.html#"+thing;window.open(t)} else window.alert("Not%20a%20valid%20GitHub%20page")}();
+javascript:/*active-forks bookmarklet*/!function(){if(title=document.title,title)if(thing=title.split(/(GitHub\s-\s)*([^:]*)/)[2],thing){var t="https://eapo.github.io/active-forks/index.html#"+thing;window.open(t)} else window.alert("Not%20a%20valid%20GitHub%20page")}();
 ```
 
 It's recommended to use just the `丫` [U+4E2B Character](https://unicode-table.com/en/4E2B/) as the name of the _bookmarklet_ to keep it short and clear.
 
 ![Screenshot](screenshot.png "_Active Forks_ in Action")
+
+## Features
+- **List forks** of a GitHub repository
+- **Advanced Filter** listings using _Custom Search Builder_
+- **Simple Filter** listing using _Search_ term
+- **List `10|25|50|100`** entrieswith _Previous_|_Next_|_&numero;_ pager
+- **`ASC|DESC` Sort** listing by data type
+- **`URL`** to _Repo_|_Owner_|_Forks_|_Open Issues_
